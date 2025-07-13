@@ -145,6 +145,56 @@ export type Database = {
           },
         ]
       }
+      applications: {
+        Row: {
+          application_date: string | null
+          created_at: string | null
+          deadline_date: string | null
+          documents_submitted: string[] | null
+          follow_up_date: string | null
+          id: string
+          notes: string | null
+          scholarship_id: string
+          status: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          application_date?: string | null
+          created_at?: string | null
+          deadline_date?: string | null
+          documents_submitted?: string[] | null
+          follow_up_date?: string | null
+          id?: string
+          notes?: string | null
+          scholarship_id: string
+          status?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          application_date?: string | null
+          created_at?: string | null
+          deadline_date?: string | null
+          documents_submitted?: string[] | null
+          follow_up_date?: string | null
+          id?: string
+          notes?: string | null
+          scholarship_id?: string
+          status?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "applications_scholarship_id_fkey"
+            columns: ["scholarship_id"]
+            isOneToOne: false
+            referencedRelation: "scholarships"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       blog_posts: {
         Row: {
           author: string
@@ -386,6 +436,117 @@ export type Database = {
         }
         Relationships: []
       }
+      document_templates: {
+        Row: {
+          category: string | null
+          content: string
+          created_at: string | null
+          id: string
+          is_premium: boolean | null
+          title: string
+          type: string
+          updated_at: string | null
+          variables: Json | null
+        }
+        Insert: {
+          category?: string | null
+          content: string
+          created_at?: string | null
+          id?: string
+          is_premium?: boolean | null
+          title: string
+          type: string
+          updated_at?: string | null
+          variables?: Json | null
+        }
+        Update: {
+          category?: string | null
+          content?: string
+          created_at?: string | null
+          id?: string
+          is_premium?: boolean | null
+          title?: string
+          type?: string
+          updated_at?: string | null
+          variables?: Json | null
+        }
+        Relationships: []
+      }
+      documents: {
+        Row: {
+          content: string | null
+          created_at: string | null
+          file_url: string | null
+          id: string
+          is_template: boolean | null
+          title: string
+          type: string
+          updated_at: string | null
+          user_id: string
+          version: number | null
+        }
+        Insert: {
+          content?: string | null
+          created_at?: string | null
+          file_url?: string | null
+          id?: string
+          is_template?: boolean | null
+          title: string
+          type: string
+          updated_at?: string | null
+          user_id: string
+          version?: number | null
+        }
+        Update: {
+          content?: string | null
+          created_at?: string | null
+          file_url?: string | null
+          id?: string
+          is_template?: boolean | null
+          title?: string
+          type?: string
+          updated_at?: string | null
+          user_id?: string
+          version?: number | null
+        }
+        Relationships: []
+      }
+      notifications: {
+        Row: {
+          action_url: string | null
+          created_at: string | null
+          id: string
+          is_read: boolean | null
+          message: string
+          scheduled_for: string | null
+          title: string
+          type: string | null
+          user_id: string
+        }
+        Insert: {
+          action_url?: string | null
+          created_at?: string | null
+          id?: string
+          is_read?: boolean | null
+          message: string
+          scheduled_for?: string | null
+          title: string
+          type?: string | null
+          user_id: string
+        }
+        Update: {
+          action_url?: string | null
+          created_at?: string | null
+          id?: string
+          is_read?: boolean | null
+          message?: string
+          scheduled_for?: string | null
+          title?: string
+          type?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       packages: {
         Row: {
           agent_id: string | null
@@ -544,6 +705,98 @@ export type Database = {
         }
         Relationships: []
       }
+      saved_scholarships: {
+        Row: {
+          created_at: string | null
+          id: string
+          scholarship_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          scholarship_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          scholarship_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "saved_scholarships_scholarship_id_fkey"
+            columns: ["scholarship_id"]
+            isOneToOne: false
+            referencedRelation: "scholarships"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      scholarships: {
+        Row: {
+          amount: number | null
+          application_deadline: string | null
+          application_url: string | null
+          benefits: string[] | null
+          country: string
+          created_at: string | null
+          currency: string | null
+          degree_levels: string[]
+          description: string | null
+          eligibility_criteria: string | null
+          fields_of_study: string[]
+          id: string
+          is_active: boolean | null
+          language_requirements: string[] | null
+          requirements: string[] | null
+          title: string
+          university: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          amount?: number | null
+          application_deadline?: string | null
+          application_url?: string | null
+          benefits?: string[] | null
+          country: string
+          created_at?: string | null
+          currency?: string | null
+          degree_levels: string[]
+          description?: string | null
+          eligibility_criteria?: string | null
+          fields_of_study: string[]
+          id?: string
+          is_active?: boolean | null
+          language_requirements?: string[] | null
+          requirements?: string[] | null
+          title: string
+          university?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          amount?: number | null
+          application_deadline?: string | null
+          application_url?: string | null
+          benefits?: string[] | null
+          country?: string
+          created_at?: string | null
+          currency?: string | null
+          degree_levels?: string[]
+          description?: string | null
+          eligibility_criteria?: string | null
+          fields_of_study?: string[]
+          id?: string
+          is_active?: boolean | null
+          language_requirements?: string[] | null
+          requirements?: string[] | null
+          title?: string
+          university?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       subscription_plans: {
         Row: {
           created_at: string | null
@@ -613,6 +866,99 @@ export type Database = {
           subject?: string
           updated_at?: string | null
           user_id?: string | null
+        }
+        Relationships: []
+      }
+      user_profiles: {
+        Row: {
+          bio: string | null
+          country: string | null
+          created_at: string | null
+          current_degree_level: string | null
+          field_of_study: string | null
+          full_name: string | null
+          goals: string | null
+          gpa: number | null
+          id: string
+          phone: string | null
+          preferred_languages: string[] | null
+          profile_image_url: string | null
+          target_countries: string[] | null
+          target_degree_levels: string[] | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          bio?: string | null
+          country?: string | null
+          created_at?: string | null
+          current_degree_level?: string | null
+          field_of_study?: string | null
+          full_name?: string | null
+          goals?: string | null
+          gpa?: number | null
+          id?: string
+          phone?: string | null
+          preferred_languages?: string[] | null
+          profile_image_url?: string | null
+          target_countries?: string[] | null
+          target_degree_levels?: string[] | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          bio?: string | null
+          country?: string | null
+          created_at?: string | null
+          current_degree_level?: string | null
+          field_of_study?: string | null
+          full_name?: string | null
+          goals?: string | null
+          gpa?: number | null
+          id?: string
+          phone?: string | null
+          preferred_languages?: string[] | null
+          profile_image_url?: string | null
+          target_countries?: string[] | null
+          target_degree_levels?: string[] | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_roadmaps: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          id: string
+          is_active: boolean | null
+          progress_percentage: number | null
+          steps: Json | null
+          title: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          is_active?: boolean | null
+          progress_percentage?: number | null
+          steps?: Json | null
+          title: string
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          is_active?: boolean | null
+          progress_percentage?: number | null
+          steps?: Json | null
+          title?: string
+          updated_at?: string | null
+          user_id?: string
         }
         Relationships: []
       }
