@@ -54,6 +54,16 @@ const Index = () => {
             <span className="text-blue-600 block">Scholarship Success</span>
           </h1>
           
+          {/* Featured Scholarship Image */}
+          <div className="mb-8 relative group cursor-pointer transform hover:scale-105 transition-transform duration-300">
+            <img 
+              src="/lovable-uploads/4e50a179-f874-4664-a7b0-2ee61a9f5f0e.png" 
+              alt="Achieve More With Our Exclusive Scholarship Opportunity" 
+              className="w-full max-w-2xl mx-auto rounded-2xl shadow-2xl"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+          
           <p className="text-xl text-gray-600 mb-8 leading-relaxed">
             Discover personalized scholarships, get AI assistance for applications, 
             and join a community of successful scholarship winners. Your journey to 
