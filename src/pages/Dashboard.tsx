@@ -1,8 +1,10 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { DashboardLayout } from '@/components/layout/DashboardLayout';
+import { Navbar } from '@/components/layout/Navbar';
 import { 
   BookOpen, 
   Search, 
@@ -17,8 +19,16 @@ import {
 import { Link } from 'react-router-dom';
 
 export const Dashboard: React.FC = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
-    <div className="space-y-8">
+    <div className="min-h-screen bg-background">
+      <Navbar 
+        onMobileMenuToggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        isMobileMenuOpen={isMobileMenuOpen}
+      />
+      <DashboardLayout>
+        <div className="space-y-8">
       <div>
         <h1 className="text-3xl font-bold">Welcome to ScholarPath</h1>
         <p className="text-muted-foreground mt-2">
@@ -26,8 +36,8 @@ export const Dashboard: React.FC = () => {
         </p>
       </div>
 
-      {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {/* Stats Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Available Scholarships</CardTitle>
@@ -79,8 +89,8 @@ export const Dashboard: React.FC = () => {
         </Card>
       </div>
 
-      {/* Quick Actions */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Quick Actions */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         <Card className="hover:shadow-md transition-shadow cursor-pointer">
           <CardHeader>
             <div className="flex items-center gap-3">
@@ -139,8 +149,8 @@ export const Dashboard: React.FC = () => {
         </Card>
       </div>
 
-      {/* Recent Activity */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Recent Activity */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
         <Card>
           <CardHeader>
             <CardTitle>Recent Applications</CardTitle>
@@ -199,8 +209,10 @@ export const Dashboard: React.FC = () => {
               <Badge variant="outline">1 month</Badge>
             </div>
           </CardContent>
-        </Card>
-      </div>
+          </Card>
+          </div>
+        </div>
+      </DashboardLayout>
     </div>
   );
 };

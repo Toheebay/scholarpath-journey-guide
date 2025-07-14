@@ -1,0 +1,26 @@
+{
+  "name": "ScholarPath - Scholarship Success",
+  "short_name": "ScholarPath",
+  "description": "AI-powered scholarship finder with 10,000+ opportunities worldwide. No IELTS, TOEFL, or Duolingo required.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["education", "productivity"],
+  "lang": "en"
+}
