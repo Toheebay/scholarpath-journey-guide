@@ -8,7 +8,7 @@ interface AuthContextType {
   user: User | null;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
-  signUp: (email: string, password: string) => Promise<void>;
+  signUp: (email: string, password: string, metadata?: any) => Promise<void>;
   signOut: () => Promise<void>;
 }
 
@@ -59,8 +59,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
   };
 
-  const signUp = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signUp({ email, password });
+  const signUp = async (email: string, password: string, metadata?: any) => {
+    const { error } = await supabase.auth.signUp({ 
+      email, 
+      password,
+      options: {
+        data: metadata
+      }
+    });
     if (error) {
       toast({
         title: "Error",
@@ -71,7 +77,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
     toast({
       title: "Success",
-      description: "Check your email to confirm your account!",
+      description: "Account created successfully!",
     });
   };
 
