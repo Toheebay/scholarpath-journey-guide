@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "@/components/auth/AuthProvider";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import Index from "./pages/Index";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import { Auth } from "./pages/Auth";
 import { Dashboard } from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
@@ -55,6 +57,8 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={user ? <Navigate to="/dashboard" replace /> : <Index />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
       <Route path="/auth" element={<PublicRoute><Auth /></PublicRoute>} />
       <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
       {/* Placeholder routes for other pages */}
