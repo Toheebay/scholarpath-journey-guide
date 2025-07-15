@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { SignInForm } from '@/components/auth/SignInForm';
 import { SignUpForm } from '@/components/auth/SignUpForm';
+import { AdminSetup } from '@/components/admin/AdminSetup';
 import { Navbar } from '@/components/layout/Navbar';
 import { Check } from 'lucide-react';
 
@@ -80,13 +81,18 @@ export const Auth: React.FC = () => {
         </div>
         
         {/* Right side - Auth forms */}
-        <div className="w-full lg:w-1/2 flex items-center justify-center bg-background p-4 lg:p-8">
+        <div className="w-full lg:w-1/2 flex flex-col items-center justify-center bg-background p-4 lg:p-8 space-y-6">
           <div className="w-full max-w-md">
             {isSignIn ? (
               <SignInForm onToggleMode={() => setIsSignIn(false)} />
             ) : (
               <SignUpForm onToggleMode={() => setIsSignIn(true)} />
             )}
+          </div>
+          
+          {/* Admin Setup Component */}
+          <div className="w-full max-w-md">
+            <AdminSetup />
           </div>
         </div>
       </div>
