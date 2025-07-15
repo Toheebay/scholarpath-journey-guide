@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 export const AdminSetup: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -10,28 +11,26 @@ export const AdminSetup: React.FC = () => {
   const createAdminUser = async () => {
     setLoading(true);
     try {
-      const response = await fetch('/functions/v1/create-admin', {
+      const { data, error } = await supabase.functions.invoke('create-admin', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
       });
 
-      const data = await response.json();
-
-      if (response.ok) {
-        toast({
-          title: "Success",
-          description: "Admin user created successfully! You can now login with adebayo@admin.com",
-        });
-      } else {
+      if (error) {
+        console.error('Error invoking function:', error);
         toast({
           title: "Error",
-          description: data.error || "Failed to create admin user",
+          description: error.message || "Failed to create admin user",
           variant: "destructive",
         });
+        return;
       }
+
+      toast({
+        title: "Success",
+        description: "Admin user created successfully! You can now login with adebayo@admin.com",
+      });
     } catch (error) {
+      console.error('Unexpected error:', error);
       toast({
         title: "Error",
         description: "Failed to create admin user",

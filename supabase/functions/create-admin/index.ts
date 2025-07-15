@@ -46,17 +46,7 @@ serve(async (req) => {
       )
     }
 
-    // Update the profile with the correct user ID
-    if (authData.user) {
-      const { error: profileError } = await supabaseClient
-        .from('profiles')
-        .update({ id: authData.user.id })
-        .eq('email', 'adebayo@admin.com')
-
-      if (profileError) {
-        console.error('Profile update error:', profileError)
-      }
-    }
+    console.log('Admin user created:', authData.user?.id)
 
     return new Response(
       JSON.stringify({ 
