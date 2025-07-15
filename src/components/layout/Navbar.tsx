@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -31,7 +32,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onMobileMenuToggle, isMobileMenu
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <img src="/favicon.png" alt="ScholarPath" className="h-8 w-8" />
+            <img src="/lovable-uploads/3fc9c01e-0e41-494a-97d5-e48187ab9e2f.png" alt="ScholarPath" className="h-8 w-8" />
             <span className="text-xl font-bold text-primary">ScholarPath</span>
           </Link>
 

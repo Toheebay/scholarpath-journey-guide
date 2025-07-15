@@ -28,6 +28,11 @@ export const SignInForm: React.FC<SignInFormProps> = ({ onToggleMode }) => {
     }
   };
 
+  const handleAdminLogin = () => {
+    setEmail('adebayo@admin.com');
+    setPassword('school1');
+  };
+
   return (
     <Card className="w-full max-w-md mx-auto">
       <CardHeader>
@@ -58,6 +63,14 @@ export const SignInForm: React.FC<SignInFormProps> = ({ onToggleMode }) => {
           </div>
           <Button type="submit" className="w-full" disabled={loading}>
             {loading ? 'Signing in...' : 'Sign In'}
+          </Button>
+          <Button 
+            type="button" 
+            variant="outline" 
+            className="w-full" 
+            onClick={handleAdminLogin}
+          >
+            Admin Login (Demo)
           </Button>
           <Button type="button" variant="ghost" className="w-full" onClick={onToggleMode}>
             Don't have an account? Sign up
